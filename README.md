@@ -1,5 +1,9 @@
 # Codex Usage Status
 
+<p align="center">
+  <img src="Resources/Assets.xcassets/AppIcon.appiconset/AppIcon-1024.png" width="160" alt="Codex Usage Status app icon">
+</p>
+
 A dockless macOS HUD for displaying Codex usage information.
 
 ## Requirements
