@@ -44,12 +44,22 @@ private struct UsageMeter: View {
             ProgressView(value: snapshot.usedPercentage, total: 100)
                 .progressViewStyle(.linear)
 
-            Text("Resets \(snapshot.resetsAt, format: .relative(presentation: .named))")
+            Text("Resets in \(countdown)")
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }
         .padding(20)
         .background(.quaternary, in: RoundedRectangle(cornerRadius: 12))
+    }
+
+    private var countdown: String {
+        let minutes = max(0, Int(snapshot.resetsAt.timeIntervalSinceNow / 60))
+        let days = minutes / 1_440
+        let hours = (minutes % 1_440) / 60
+        let remainingMinutes = minutes % 60
+        if days > 0 { return "\(days)d \(hours)h \(remainingMinutes)m" }
+        if hours > 0 { return "\(hours)h \(remainingMinutes)m" }
+        return remainingMinutes > 0 ? "\(remainingMinutes)m" : "less than a minute"
     }
 }
 
