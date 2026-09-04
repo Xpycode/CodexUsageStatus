@@ -1,0 +1,10 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - run: brew install xcodegen
+      - run: xcodegen generate
+      - run: xcodebuild -project CodexUsageStatus.xcodeproj -scheme CodexUsageStatus -destination 'platform=macOS' test
