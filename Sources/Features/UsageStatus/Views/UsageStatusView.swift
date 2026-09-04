@@ -5,12 +5,13 @@ struct UsageStatusView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            VStack(alignment: .leading, spacing: 6) {
-                Text("Codex usage")
+            VStack(spacing: 6) {
+                Text("Codex Usage Status")
                     .font(.title2.weight(.semibold))
                 Text("⌃⌥⌘X to toggle · click elsewhere to dismiss")
                     .foregroundStyle(.secondary)
             }
+            .frame(maxWidth: .infinity)
 
             if let snapshot = store.snapshot {
                 if snapshot.periodTitle == "Weekly limit" { UnavailableLimit(title: "5-hour limit") }
